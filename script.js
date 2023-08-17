@@ -64,10 +64,15 @@ function showQuestion() {
 function answer(selection) {
     let question = questions[currentQuestion];
     let selectedQuestionNumber = selection.slice(-1);
+    let idOfRightAnswer = `answer${question['rightAnswer']}`;
 
     if (selectedQuestionNumber == question['rightAnswer']) {
         console.log('Richtig')
+        document.getElementById(selection).parentNode.classList.add('bg-success');
     } else {
         console.log('Falsch')
+        document.getElementById(selection).parentNode.classList.add('bg-danger');
+        document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
     }
+    document.getElementById('nextQuestion').disabled = false;
 }
