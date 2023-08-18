@@ -24,8 +24,19 @@
     </nav>
     <div class="container">
         <div class="card">
-            <img src="./img/5jw5uzxo.bmp" class="card-img-top" alt="...">
-            <div class="card-body quizzCard">
+            <img id="imgTop" src="./img/5jw5uzxo.bmp" class="card-img-top" alt="...">
+
+            <div class="card-body" id="endScreen" style="display: none;">
+                <img src="./img/a6syk9on.bmp" class="card-img" alt="">
+                <h1>Quiz beendet</h1>
+                <h2>Your Score</h2>
+
+                <div>
+                    <p>du hast <b id="reachedPoints"></b> fragen von <b>9</b> beantwortet</p>
+                </div>
+            </div>
+
+            <div class="card-body quizzCard" id="questionBody">
                 <h5 class="card-title" id="questionText">Frage</h5>
 
                 <div class="card quizAnswer mb-2" onclick="answer('answer1')">
@@ -50,8 +61,8 @@
                 </div>
                 <div class="questionFooter mt-2">
                     <span>
-                        <b>1</b> von <b id="allQuestions">5</b> Fragen</span>
-                    <Button id="nextQuestion" class="btn-primary btn" disabled>Nächste Frage</Button>
+                        <b id="questionNumber">1</b> von <b id="allQuestions"></b> Fragen</span>
+                    <Button onclick="nextQuestion()" id="nextQuestion" class="btn-primary btn" disabled>Nächste Frage</Button>
                 </div>
             </div>
         </div>
