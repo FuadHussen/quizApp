@@ -70,6 +70,14 @@ let questions = [
         "answer3": "46",
         "answer4": "33",
         "rightAnswer": 3
+    },
+    {
+        "question": "Wer war der erste Mensch auf dem Mond ?",
+        "answer1": "Neil Armstrong	",
+        "answer2": "Charles Conrad	",
+        "answer3": "Alan Bean",
+        "answer4": "Buzz Aldrin",
+        "rightAnswer": 1
     }
 ];
 
@@ -87,12 +95,15 @@ function showQuestion() {
     if (currentQuestion >= questions.length) {
         document.getElementById('endScreen').style = '';
         document.getElementById('questionBody').style = 'display: none'
-        document.getElementById('imgTop').style = 'display: none'
+        document.getElementById('imgTop').src = 'img/a6syk9on.bmp';
         score();
     } else {
 
         let question = questions[currentQuestion];
+        let percent = (currentQuestion + 1) / questions.length * 100;        
 
+        document.getElementById('progressBar').style.width = `${percent}%`
+        document.getElementById('progressBar').innerHTML = `${percent} %`
         document.getElementById('questionNumber').innerHTML = currentQuestion + 1;
         document.getElementById('questionText').innerHTML = question['question'];
         document.getElementById('answer1').innerHTML = question['answer1'];
@@ -139,6 +150,6 @@ function resetAnswerButton() {
 }
 
 
-function score(){
+function score() {
     document.getElementById('reachedPoints').innerHTML = correctAnswers;
 }

@@ -34,3 +34,7 @@ body {
 .bg-success, .bg-danger {
     color: white!important;
 }
+
+h1, h5{
+    text-align: center;
+}

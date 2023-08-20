@@ -27,13 +27,8 @@
             <img id="imgTop" src="./img/5jw5uzxo.bmp" class="card-img-top" alt="...">
 
             <div class="card-body" id="endScreen" style="display: none;">
-                <img src="./img/a6syk9on.bmp" class="card-img" alt="">
                 <h1>Quiz beendet</h1>
-                <h2>Your Score</h2>
-
-                <div>
-                    <p>du hast <b id="reachedPoints"></b> fragen von <b>9</b> beantwortet</p>
-                </div>
+                <h5>Your Score du hast <b id="reachedPoints"></b> fragen von <b>9</b> beantwortet</h5>
             </div>
 
             <div class="card-body quizzCard" id="questionBody">
@@ -59,6 +54,9 @@
                         Antwort
                     </div>
                 </div>
+                <div class="progress">
+                    <div class="progress-bar" id="progressBar" role="progressbar" style="width: 0%;">25%</div>
+                  </div>
                 <div class="questionFooter mt-2">
                     <span>
                         <b id="questionNumber">1</b> von <b id="allQuestions"></b> Fragen</span>
