@@ -83,6 +83,8 @@ let questions = [
 
 let currentQuestion = 0;
 let correctAnswers = 0;
+let AUDIO_SUCCESS = new Audio('correct.mp3');
+let AUDIO_FAIL = new Audio('false.mp3');
 
 function init() {
     document.getElementById('allQuestions').innerHTML = questions.length;
@@ -122,9 +124,11 @@ function answer(selection) {
     if (selectedQuestionNumber == question['rightAnswer']) {
         document.getElementById(selection).parentNode.classList.add('bg-success');
         correctAnswers++
+        AUDIO_SUCCESS.play();
     } else {
         document.getElementById(selection).parentNode.classList.add('bg-danger');
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success');
+        AUDIO_FAIL.play();
     }
     document.getElementById('nextQuestion').disabled = false;
 }
@@ -152,4 +156,15 @@ function resetAnswerButton() {
 
 function score() {
     document.getElementById('reachedPoints').innerHTML = correctAnswers;
+}
+
+
+function restartGame(){
+    document.getElementById('imgTop').src = 'img/5jw5uzxo.bmp';
+    document.getElementById('questionBody').style = ''//questionbody anzeigen
+    document.getElementById('endScreen').style = 'display: none'//endscreen ausblenden
+
+    rightQuestions = 0;
+    currentQuestion = 0;
+    init();
 }

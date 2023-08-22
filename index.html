@@ -17,19 +17,19 @@
 </head>
 
 <body onload="init()">
-    <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">Navbar</span>
-        </div>
-    </nav>
+    <img class="fullScreen" src="./img/4xisix3c.bmp" alt="">
     <div class="container">
-        <div class="card">
+        <div class="card height">
             <img id="imgTop" src="./img/5jw5uzxo.bmp" class="card-img-top" alt="...">
 
             <div class="card-body" id="endScreen" style="display: none;">
                 <h1>Quiz beendet</h1>
                 <h5>Your Score du hast <b id="reachedPoints"></b> fragen von <b>9</b> beantwortet</h5>
+                <div class="restartButton">
+                    <Button onclick="restartGame()" id="restartGame" class="btn-primary btn">Neustart</Button>
+                </div>
             </div>
+            
 
             <div class="card-body quizzCard" id="questionBody">
                 <h5 class="card-title" id="questionText">Frage</h5>
@@ -56,11 +56,12 @@
                 </div>
                 <div class="progress">
                     <div class="progress-bar" id="progressBar" role="progressbar" style="width: 0%;">25%</div>
-                  </div>
+                </div>
                 <div class="questionFooter mt-2">
                     <span>
                         <b id="questionNumber">1</b> von <b id="allQuestions"></b> Fragen</span>
-                    <Button onclick="nextQuestion()" id="nextQuestion" class="btn-primary btn" disabled>Nächste Frage</Button>
+                    <Button onclick="nextQuestion()" id="nextQuestion" class="btn-primary btn" disabled>Nächste
+                        Frage</Button>
                 </div>
             </div>
         </div>
