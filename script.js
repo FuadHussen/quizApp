@@ -94,25 +94,39 @@ function init() {
 
 function showQuestion() {
 
-    if (currentQuestion >= questions.length) {
+    if (gameIsOver()) {
         document.getElementById('endScreen').style = '';
         document.getElementById('questionBody').style = 'display: none'
         document.getElementById('imgTop').src = 'img/a6syk9on.bmp';
         score();
     } else {
-
-        let question = questions[currentQuestion];
-        let percent = (currentQuestion + 1) / questions.length * 100;        
-
-        document.getElementById('progressBar').style.width = `${percent}%`
-        document.getElementById('progressBar').innerHTML = `${percent} %`
-        document.getElementById('questionNumber').innerHTML = currentQuestion + 1;
-        document.getElementById('questionText').innerHTML = question['question'];
-        document.getElementById('answer1').innerHTML = question['answer1'];
-        document.getElementById('answer2').innerHTML = question['answer2'];
-        document.getElementById('answer3').innerHTML = question['answer3'];
-        document.getElementById('answer4').innerHTML = question['answer4'];
+        showNextQuestion();
+        updateProgressBar();
     }
+}
+
+
+function gameIsOver() {
+    return currentQuestion >= questions.length
+}
+
+
+function showNextQuestion() {
+    let question = questions[currentQuestion];
+    document.getElementById('questionNumber').innerHTML = currentQuestion + 1;
+    document.getElementById('questionText').innerHTML = question['question'];
+    document.getElementById('answer1').innerHTML = question['answer1'];
+    document.getElementById('answer2').innerHTML = question['answer2'];
+    document.getElementById('answer3').innerHTML = question['answer3'];
+    document.getElementById('answer4').innerHTML = question['answer4'];
+}
+
+
+function updateProgressBar() {
+    let percent = (currentQuestion + 1) / questions.length * 100;
+
+    document.getElementById('progressBar').style.width = `${percent}%`
+    document.getElementById('progressBar').innerHTML = `${percent} %`
 }
 
 
@@ -121,7 +135,7 @@ function answer(selection) {
     let selectedQuestionNumber = selection.slice(-1);
     let idOfRightAnswer = `answer${question['rightAnswer']}`;
 
-    if (selectedQuestionNumber == question['rightAnswer']) {
+    if (rightAnswerSelected(selectedQuestionNumber, question)) {
         document.getElementById(selection).parentNode.classList.add('bg-success');
         correctAnswers++
         AUDIO_SUCCESS.play();
@@ -131,6 +145,11 @@ function answer(selection) {
         AUDIO_FAIL.play();
     }
     document.getElementById('nextQuestion').disabled = false;
+}
+
+
+function rightAnswerSelected(selectedQuestionNumber, question){
+    return selectedQuestionNumber == question['rightAnswer'];
 }
 
 
@@ -159,7 +178,7 @@ function score() {
 }
 
 
-function restartGame(){
+function restartGame() {
     document.getElementById('imgTop').src = 'img/5jw5uzxo.bmp';
     document.getElementById('questionBody').style = ''//questionbody anzeigen
     document.getElementById('endScreen').style = 'display: none'//endscreen ausblenden
