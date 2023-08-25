@@ -67,3 +67,8 @@ h5 {
     justify-content: center;
     margin-top: 16px;
 }
+
+.score{
+    text-align: center;
+    text-decoration: underline;
+}
